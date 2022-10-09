@@ -66,9 +66,9 @@
   </section>
 
   <section class="employees">
-    <!-- Employee table -->
     <div class="container mt-5">
       <div class="container-fluid">
+        <!-- Employee table -->
         <table
           class="employee-table table table-light table-bordered table-hover table-responsive">
           <thead class="thead-light">
@@ -83,12 +83,24 @@
           </thead>
 
           <tbody class="employee-table__body">
+          <script type="text/template" id="table-body-template">
+            <% _.each(employees, function(employee, key, arr) { %>
+            <tr>
+              <td><%= employee.id %></td>
+              <td><%= employee.first_name %></td>
+              <td><%= employee.last_name %></td>
+              <td><%= employee.position_id %></td>
+              <td><%= employee.birthday %></td>
+              <td><%= employee.salary %></td>
+            </tr>
+            <% }); %>
+          </script>
           </tbody>
         </table>
       </div>
 
-      <!-- Table pagination bar -->
       <div class="container-fluid mt-2">
+        <!-- Table pagination bar -->
         <nav id="employeeNavigation" aria-label="Table navigation">
           <ul class="pagination container d-flex justify-content-end">
             <li class="page-item mx-1">
@@ -151,23 +163,15 @@
   </div>
 </footer>
 
-<!-- TODO -->
-<template id="template-employee">
-  <tr class="employee">
-    <td class="employee__id">employee__id</td>
-    <td class="employee__first-name">employee__first-name</td>
-    <td class="employee__last-name">employee__last-name</td>
-    <td class="employee__position">employee__position</td>
-    <td class="employee__birthday">employee__birthday</td>
-    <td class="employee__salary">employee__salary</td>
-  </tr>
-</template>
-
 <!-- Bootstrap JS -->
 <script
   src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
   crossorigin="anonymous"></script>
-<script src="src/table-gen.js"></script>
+<!-- Underscore JS -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.13.6/underscore-umd-min.js"></script>
+<!-- Main JS script -->
+<script src="src/index.js"></script>
 </body>
 </html>
